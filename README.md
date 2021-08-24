@@ -1,4 +1,4 @@
-###University of Nevada, Reno CS 480/680 Graphics
+### University of Nevada, Reno CS 480/680 Graphics
 
 # Projects
 
