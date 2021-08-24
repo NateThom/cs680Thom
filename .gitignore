@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+# Prerequisites
+*.d
+
+>>>>>>> 1d6869f71c6b3dab66978815b389987b8479026d
 # Compiled Object files
 *.slo
 *.lo
@@ -15,6 +21,10 @@
 
 # Fortran module files
 *.mod
+<<<<<<< HEAD
+=======
+*.smod
+>>>>>>> 1d6869f71c6b3dab66978815b389987b8479026d
 
 # Compiled Static libraries
 *.lai
@@ -26,4 +36,7 @@
 *.exe
 *.out
 *.app
+<<<<<<< HEAD
 build/
+=======
+>>>>>>> 1d6869f71c6b3dab66978815b389987b8479026d

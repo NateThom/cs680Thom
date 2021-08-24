@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Example OpenGL Graphics Programs
 ## This is for use at the University of Nevada, Reno CS 480/680 Graphics Class
 Any students in that class follow the instructions at [**Github Setup**](https://github.com/HPC-Vis/computer-graphics/wiki/Github-Setup) to begin. This is part of the first assignment in the class and necessary for turning in assignments throughout the semester.
@@ -13,3 +14,7 @@ This is a simple colored triangle on the screen. To run this project ```cd PA0``
 This is a cube that rotates in place on the screen. To run this project ```cd PA1``` then follow the instructions in the README.md.
 
 
+=======
+# cs680Thom
+Repository for all coursework in Computer Graphics - CS680
+>>>>>>> 1d6869f71c6b3dab66978815b389987b8479026d
