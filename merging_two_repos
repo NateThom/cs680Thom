@@ -1,8 +1,12 @@
-If you want to merge project-a into project-b:
+# If you want to merge class repository into personal repository:
 
-cd path/to/project-b
-git remote add project-a /path/to/project-a
-git fetch project-a --tags
-git merge --allow-unrelated-histories project-a/master # or whichever branch you want to merge
-git remote remove project-a
+# git pull in class repository
+cd /home/nthom/Documents/computer-graphics
+git pull
+
+cd /home/nthom/Documents/cs680Thom
+git remote add computer-graphics /home/nthom/Documents/computer-graphics
+git fetch computer-graphics --tags
+git merge --allow-unrelated-histories computer-graphics/master # or whichever branch you want to merge
+git remote remove computer-graphics
 
