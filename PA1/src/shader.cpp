@@ -1,3 +1,4 @@
+#include <fstream>
 #include "shader.h"
 
 Shader::Shader()
@@ -108,6 +109,26 @@ bool Shader::AddShader(GLenum ShaderType)
   return true;
 }
 
+// Based on code from ogldev_util.h
+bool shader::ReadShaderFile(const char* pFileName, string& outFile){
+    std::ifstream f(pFileName);
+
+    bool return_flag = false;
+
+    if (f.is_open()){
+        string line;
+        while(getline(f, line)) {
+            outFile.append(line);
+            outFile.append("\n");
+        }
+
+        f.close();
+
+        return_flag = true;
+    }
+
+    return return_flag;
+}
 
 // After all the shaders have been added to the program call this function
 // to link and validate the program.

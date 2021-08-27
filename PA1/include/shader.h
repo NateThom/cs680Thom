@@ -1,6 +1,7 @@
 #ifndef SHADER_H
 #define SHADER_H
 
+#include <iostream>
 #include <vector>
 
 #include "graphics_headers.h"
@@ -13,6 +14,7 @@ class Shader
     bool Initialize();
     void Enable();
     bool AddShader(GLenum ShaderType);
+    bool ReadShaderFile(const char* pFileName, string& outFile);
     bool Finalize();
     GLint GetUniformLocation(const char* pUniformName);
 
