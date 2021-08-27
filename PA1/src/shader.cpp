@@ -109,14 +109,68 @@ bool Shader::AddShader(GLenum ShaderType)
   return true;
 }
 
+bool Shader::AddShader(GLenum ShaderType, const std::string& shaderFilePath)
+{
+  std::string s;
+
+  if(ShaderType == GL_VERTEX_SHADER)
+  {
+    if(!Shader::ReadShaderFile(shaderFilePath, s)){
+      std::cerr << "Error reading vertex shader from file " << shaderFilePath << std::endl;
+      return false;
+    }
+  }
+  else if(ShaderType == GL_FRAGMENT_SHADER)
+  {
+    if(!Shader::ReadShaderFile(shaderFilePath, s)){
+      std::cerr << "Error reading fragment shader from file " << shaderFilePath << std::endl;
+      return false;
+    }
+  }
+
+  GLuint ShaderObj = glCreateShader(ShaderType);
+
+  if (ShaderObj == 0)
+  {
+    std::cerr << "Error creating shader type " << ShaderType << std::endl;
+    return false;
+  }
+
+  // Save the shader object - will be deleted in the destructor
+  m_shaderObjList.push_back(ShaderObj);
+
+  const GLchar* p[1];
+  p[0] = s.c_str();
+  GLint Lengths[1] = { (GLint)s.size() };
+
+  glShaderSource(ShaderObj, 1, p, Lengths);
+
+  glCompileShader(ShaderObj);
+
+  GLint success;
+  glGetShaderiv(ShaderObj, GL_COMPILE_STATUS, &success);
+
+  if (!success)
+  {
+    GLchar InfoLog[1024];
+    glGetShaderInfoLog(ShaderObj, 1024, NULL, InfoLog);
+    std::cerr << "Error compiling: " << InfoLog << std::endl;
+    return false;
+  }
+
+  glAttachShader(m_shaderProg, ShaderObj);
+
+  return true;
+}
+
 // Based on code from ogldev_util.h
-bool shader::ReadShaderFile(const char* pFileName, string& outFile){
-    std::ifstream f(pFileName);
+bool Shader::ReadShaderFile(const std::string& shaderFilePath, std::string& outFile){
+    std::ifstream f(shaderFilePath);
 
     bool return_flag = false;
 
     if (f.is_open()){
-        string line;
+        std::string line;
         while(getline(f, line)) {
             outFile.append(line);
             outFile.append("\n");

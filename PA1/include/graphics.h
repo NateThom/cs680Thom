@@ -15,6 +15,7 @@ class Graphics
     Graphics();
     ~Graphics();
     bool Initialize(int width, int height);
+    bool Initialize(int width, int height, const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath);
     void Update(unsigned int dt);
     void Render();
 
