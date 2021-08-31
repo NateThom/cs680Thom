@@ -21,7 +21,8 @@ class Object
     GLuint VB;
     GLuint IB;
 
-    float angle;
+    float angle_rotate;
+    float angle_translate;
 };
 
 #endif /* OBJECT_H */

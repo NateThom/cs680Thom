@@ -60,7 +60,8 @@ Object::Object()
     Indices[i] = Indices[i] - 1;
   }
 
-  angle = 0.0f;
+  angle_rotate = 0.0f;
+  angle_translate = 0.0f;
 
   glGenBuffers(1, &VB);
   glBindBuffer(GL_ARRAY_BUFFER, VB);
@@ -79,9 +80,16 @@ Object::~Object()
 
 void Object::Update(unsigned int dt)
 {
-  angle += dt * M_PI/1000;
-  model = glm::rotate(glm::mat4(1.0f), (angle), glm::vec3(0.0, 1.0, 0.0));
-  model = glm::translate(model, glm::vec3(3.0, 0.0, 0.0));
+  bool rotate_flag = true, translate_flag = true;
+  if(rotate_flag){
+    angle_rotate += dt * M_PI/1000;
+  }
+  if (translate_flag){
+    angle_translate += dt * M_PI/1000;
+  }
+
+  model = glm::translate(glm::mat4(1.0f), glm::vec3(cos(angle_translate) * 5, 0, sin(angle_translate) * 5));
+  model = glm::rotate(model, (angle_rotate), glm::vec3(0.0, 1.0, 0.0));
 }
 
 glm::mat4 Object::GetModel()

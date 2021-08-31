@@ -22,7 +22,18 @@ brew install glew glm sdl2
 To build this project there are two options. One is to use CMake which makes including new libraries easier, and handles new files added automatically to the src and include directory. CMake is a small new learning curve but makes things easier in the future.
 The second option is to use the provided Makefile which is used as usual.
 
-Running the make in a separate directory will allow easy cleanup of the build data, and an easy way to prevent unnecessary data to be added to the git repository.  
+Running the make in a separate directory will allow easy cleanup of the build data, and an easy way to prevent unnecessary data to be added to the git repository.
+
+Note that this program is designed to accept custom vertex and fragment shaders. To run program with custom shaders 
+please specify shader file paths with either -v for vertex shader of -f for fragment shader. For example:
+
+```bash
+./PA1 -v <path-to-vertex-shader>
+./PA1 -f <path-to-fragment-shader>
+./PA1 -v <path-to-vertex-shader> -f <path-to-fragment-shader>
+```
+
+If no custom shader file paths are provided then the program will run with the default shaders.
 
 ### CMake Instructions
 The building of the project is done using CMake, installation with apt-get or brew may be necessary. Later use with CMake and Shader files will be require the copy of a directory where those files are stored (ex. shaders). To do this in the ```add_custom_target``` function place 
@@ -48,6 +59,3 @@ cp ../makefile .
 make
 ./Tutorial
 ```
-
-## Netboot Ubuntu\Debian
-The project should run on the network install of Debian in the ECC. To boot into this OS, restart the computer and use the arrow keys on boot to select Ubuntu\Debian from the startup list (currently its listed under CS135).
