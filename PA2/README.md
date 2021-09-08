@@ -1,4 +1,4 @@
-# PA1: Spinning Cube
+# PA2: Interaction: Menus, Keyboard, and Mouse
 
 # Dependencies, Building, and Running
 
