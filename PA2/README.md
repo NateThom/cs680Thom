@@ -19,22 +19,7 @@ brew install glew glm sdl2
 ```
 
 ## Building and Running
-To build this project there are two options. One is to use CMake which makes including new libraries easier, and handles new files added automatically to the src and include directory. CMake is a small new learning curve but makes things easier in the future.
-The second option is to use the provided Makefile which is used as usual.
-
-Running the make in a separate directory will allow easy cleanup of the build data, and an easy way to prevent unnecessary data to be added to the git repository.
-
-Note that this program is designed to accept custom vertex and fragment shaders. To run program with custom shaders 
-please specify shader file paths with either -v for vertex shader of -f for fragment shader. For example:
-
-```bash
-./PA2 -v <path-to-vertex-shader>
-./PA2 -f <path-to-fragment-shader>
-./PA2 -v <path-to-vertex-shader> -f <path-to-fragment-shader>
-./PA2 -v ../shaders/vert1.glsl -f ../shaders/frag1.glsl
-```
-
-If no custom shader file paths are provided then the program will run with the default shaders.
+CMake is used to build the projcet. Running the make in a separate directory will allow easy cleanup of the build data, and an easy way to prevent unnecessary data to be added to the git repository.
 
 ### CMake Instructions
 The building of the project is done using CMake, installation with apt-get or brew may be necessary. Later use with CMake and Shader files will be require the copy of a directory where those files are stored (ex. shaders). To do this in the ```add_custom_target``` function place 
@@ -49,6 +34,18 @@ cmake ..
 make
 ./PA2 <path-to-vertex-shader> -f <path-to-fragment-shader>
 ```
+
+Note that this program is designed to accept custom vertex and fragment shaders. To run program with custom shaders 
+please specify shader file paths with either -v for vertex shader of -f for fragment shader. For example:
+
+```bash
+./PA2 -v <path-to-vertex-shader>
+./PA2 -f <path-to-fragment-shader>
+./PA2 -v <path-to-vertex-shader> -f <path-to-fragment-shader>
+./PA2 -v ../shaders/vert1.glsl -f ../shaders/frag1.glsl
+```
+
+If no custom shader file paths are provided then the program will run with the default shaders.
 
 ## Usage
 While the program is running controls can be input via the keyboard as follows:
