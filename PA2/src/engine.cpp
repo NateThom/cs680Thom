@@ -138,7 +138,7 @@ void Engine::Run()
       }
     }
     ImGui::SameLine();
-    if (ImGui::Button("Invert Translation/Orbit")) {
+    if (ImGui::Button("Invert Translation")) {
       // start/stop rotation
       if (m_translate_reverse_flag) {
         m_translate_reverse_flag = false;
@@ -146,7 +146,7 @@ void Engine::Run()
         m_translate_reverse_flag = true;
       }
     }
-    if (ImGui::Button("Stop Rotation")) {
+    if (ImGui::Button("Start/Stop Rotation")) {
       // start/stop rotation
       if (m_rotate_flag) {
         m_rotate_flag = false;
@@ -155,7 +155,7 @@ void Engine::Run()
       }
     }
     ImGui::SameLine();
-    if (ImGui::Button("Stop Translation/Orbit")) {
+    if (ImGui::Button("Start/Stop Translation")) {
       // start/stop rotation
       if (m_translate_flag) {
         m_translate_flag = false;
@@ -227,7 +227,7 @@ void Engine::Keyboard()
   }
 //  else if (m_event.type == SDL_MOUSEBUTTONDOWN){
 //    // invert rotation direction
-//    if (!m_rotate_reverse_flag){
+//    if (!m_stop){
 //      m_rotate_reverse_flag = true;
 //    }
 //    else if (m_rotate_reverse_flag){
