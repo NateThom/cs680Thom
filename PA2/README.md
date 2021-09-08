@@ -52,8 +52,10 @@ make
 ## Usage
 While the program is running controls can be input via the keyboard and mouse as follows:
 
-Up Arrow Key: Inverts the rotation of the cube
-Left Arrow Key: Starts/stops the rotation of the cube
-Down Arrow Key: Inverts the translation/orbit of the cube
-Right Arrow Key: Starts/stops the translation/orbit of the cube
-Any Mouse Button: Inverts the rotation of the cube
+<ol>
+  <li> Up Arrow Key: Inverts the rotation of the cube </li>
+  <li> Left Arrow Key: Starts/stops the rotation of the cube </li>
+  <li> Down Arrow Key: Inverts the translation/orbit of the cube </li>
+  <li> Right Arrow Key: Starts/stops the translation/orbit of the cube </li>
+  <li> Any Mouse Button: Inverts the rotation of the cube </li>
+</ol>
