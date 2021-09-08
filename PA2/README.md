@@ -5,8 +5,6 @@
 ## Dependency Instructions
 For both of the operating systems to run this project installation of these three programs are required [GLEW](http://glew.sourceforge.net/), [GLM](http://glm.g-truc.net/0.9.7/index.html), and [SDL2](https://wiki.libsdl.org/Tutorials).
 
-These programs should already be installed on the ECC computers.
-
 ### Ubuntu/Linux
 ```bash
 sudo apt-get install libglew-dev libglm-dev libsdl2-dev
@@ -19,7 +17,6 @@ brew install glew glm sdl2
 ```
 
 ## Building and Running
-CMake is used to build the projcet. Running the make in a separate directory will allow easy cleanup of the build data, and an easy way to prevent unnecessary data to be added to the git repository.
 
 ### CMake Instructions
 The building of the project is done using CMake, installation with apt-get or brew may be necessary. Later use with CMake and Shader files will be require the copy of a directory where those files are stored (ex. shaders). To do this in the ```add_custom_target``` function place 
