@@ -153,6 +153,15 @@ void Engine::Keyboard()
       m_translate_reverse_flag = false;
     }
   }
+  else if (m_event.type == SDL_MOUSEBUTTONDOWN){
+    // invert rotation direction
+    if (!m_rotate_reverse_flag){
+      m_rotate_reverse_flag = true;
+    }
+    else if (m_rotate_reverse_flag){
+      m_rotate_reverse_flag = false;
+    }
+  }
 }
 
 unsigned int Engine::getDT()
