@@ -4,8 +4,8 @@
 #include <sys/time.h>
 #include <assert.h>
 
-#include "window.h"
 #include "graphics.h"
+#include "window.h"
 
 class Engine
 {
@@ -33,6 +33,8 @@ class Engine
     unsigned int m_DT;
     long long m_currentTimeMillis;
     bool m_running;
+
+    const char* glsl_version;
 
     bool m_rotate_flag;
     bool m_translate_flag;

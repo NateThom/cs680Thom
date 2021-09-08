@@ -18,7 +18,7 @@ class Graphics
     bool Initialize(int width, int height, const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath);
     void Update(unsigned int dt, bool rotate_flag, bool rotate_reverse_flag, bool translate_flag,
                 bool translate_reverse_flag);
-    void Render();
+    void Render(float red, float green, float blue, float alpha);
 
   private:
     std::string ErrorString(GLenum error);

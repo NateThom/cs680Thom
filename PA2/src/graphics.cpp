@@ -211,7 +211,7 @@ void Graphics::Update(unsigned int dt, bool rotate_flag, bool rotate_reverse_fla
   m_cube->Update(dt, rotate_flag, rotate_reverse_flag, translate_flag, translate_reverse_flag);
 }
 
-void Graphics::Render()
+void Graphics::Render(float red, float green, float blue, float alpha)
 {
   //clear the screen
   glClearColor(0.0, 0.0, 0.2, 1.0);
