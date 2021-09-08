@@ -57,5 +57,4 @@ While the program is running controls can be input via the keyboard and mouse as
   <li> Left Arrow Key: Starts/stops the rotation of the cube </li>
   <li> Down Arrow Key: Inverts the translation/orbit of the cube </li>
   <li> Right Arrow Key: Starts/stops the translation/orbit of the cube </li>
-  <li> Any Mouse Button: Inverts the rotation of the cube </li>
 </ol>
