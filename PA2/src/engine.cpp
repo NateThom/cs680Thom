@@ -7,6 +7,11 @@ Engine::Engine(string name, int width, int height)
   m_WINDOW_WIDTH = width;
   m_WINDOW_HEIGHT = height;
   m_FULLSCREEN = false;
+
+  m_rotate_flag = true;
+  m_rotate_reverse_flag = false;
+  m_translate_flag = true;
+  m_translate_reverse_flag = true;
 }
 
 Engine::Engine(string name)
@@ -15,6 +20,11 @@ Engine::Engine(string name)
   m_WINDOW_HEIGHT = 0;
   m_WINDOW_WIDTH = 0;
   m_FULLSCREEN = true;
+
+  m_rotate_flag = true;
+  m_rotate_reverse_flag = true;
+  m_translate_flag = false;
+  m_translate_reverse_flag = false;
 }
 
 Engine::~Engine()
@@ -89,9 +99,8 @@ void Engine::Run()
     {
       Keyboard();
     }
-
     // Update and render the graphics
-    m_graphics->Update(m_DT);
+    m_graphics->Update(m_DT, m_rotate_flag, m_rotate_reverse_flag, m_translate_flag, m_translate_reverse_flag);
     m_graphics->Render();
 
     // Swap to the Window
@@ -108,19 +117,40 @@ void Engine::Keyboard()
   else if (m_event.type == SDL_KEYDOWN)
   {
     // handle key down events here
-    switch (m_event.key.keysym.sym) {
-      case SDLK_ESCAPE:
-        m_running = false;
-        break;
+    if (m_event.key.keysym.sym == SDLK_ESCAPE){
+      m_running = false;
+    }
 
-      case SDLK_UP:
-        break;
+    // start/stop rotation
+    if (m_event.key.keysym.sym == SDLK_LEFT && m_rotate_flag){
+      m_rotate_flag = false;
+    }
+    else if (m_event.key.keysym.sym == SDLK_LEFT && !m_rotate_flag){
+      m_rotate_flag = true;
+    }
 
-      case SDLK_DOWN:
-        break;
+    // invert rotation direction
+    if (m_event.key.keysym.sym == SDLK_UP && !m_rotate_reverse_flag){
+      m_rotate_reverse_flag = true;
+    }
+    else if (m_event.key.keysym.sym == SDLK_UP && m_rotate_reverse_flag){
+      m_rotate_reverse_flag = false;
+    }
 
-      default:
-        break;
+    // start/stop translation
+    if (m_event.key.keysym.sym == SDLK_RIGHT && m_translate_flag){
+      m_translate_flag = false;
+    }
+    else if (m_event.key.keysym.sym == SDLK_RIGHT && !m_translate_flag){
+      m_translate_flag = true;
+    }
+
+    // invert translate direction
+    if (m_event.key.keysym.sym == SDLK_DOWN && !m_translate_reverse_flag){
+      m_translate_reverse_flag = true;
+    }
+    else if (m_event.key.keysym.sym == SDLK_DOWN && m_translate_reverse_flag){
+      m_translate_reverse_flag = false;
     }
   }
 }

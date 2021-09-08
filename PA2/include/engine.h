@@ -33,6 +33,11 @@ class Engine
     unsigned int m_DT;
     long long m_currentTimeMillis;
     bool m_running;
+
+    bool m_rotate_flag;
+    bool m_translate_flag;
+    bool m_rotate_reverse_flag;
+    bool m_translate_reverse_flag;
 };
 
 #endif // ENGINE_H

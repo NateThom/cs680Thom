@@ -63,6 +63,9 @@ Object::Object()
   angle_rotate = 0.0f;
   angle_translate = 0.0f;
 
+  direction_rotate = 1;
+  direction_translate = 1;
+
   glGenBuffers(1, &VB);
   glBindBuffer(GL_ARRAY_BUFFER, VB);
   glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * Vertices.size(), &Vertices[0], GL_STATIC_DRAW);
@@ -78,14 +81,21 @@ Object::~Object()
   Indices.clear();
 }
 
-void Object::Update(unsigned int dt)
+void Object::Update(unsigned int dt, bool rotate_flag, bool rotate_reverse_flag, bool translate_flag,
+                    bool translate_reverse_flag)
 {
-  bool rotate_flag = true, translate_flag = true;
-  if(rotate_flag){
+  if(rotate_flag && rotate_reverse_flag){
     angle_rotate += dt * M_PI/1000;
   }
-  if (translate_flag){
+  else if(rotate_flag && !rotate_reverse_flag){
+    angle_rotate -= dt * M_PI/1000;
+  }
+
+  if (translate_flag && !translate_reverse_flag){
     angle_translate += dt * M_PI/1000;
+  }
+  else if(translate_flag && translate_reverse_flag){
+    angle_translate -= dt * M_PI/1000;
   }
 
   model = glm::translate(glm::mat4(1.0f), glm::vec3(cos(angle_translate) * 5, 0, sin(angle_translate) * 5));

@@ -9,7 +9,8 @@ class Object
   public:
     Object();
     ~Object();
-    void Update(unsigned int dt);
+    void Update(unsigned int dt, bool rotate_flag, bool rotate_reverse_flag, bool translate_flag,
+                bool translate_reverse_flag);
     void Render();
 
     glm::mat4 GetModel();
@@ -23,6 +24,9 @@ class Object
 
     float angle_rotate;
     float angle_translate;
+
+    int direction_rotate;
+    int direction_translate;
 };
 
 #endif /* OBJECT_H */

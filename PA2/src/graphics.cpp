@@ -204,10 +204,11 @@ bool Graphics::Initialize(int width, int height, const std::string& vertexShader
   return true;
 }
 
-void Graphics::Update(unsigned int dt)
+void Graphics::Update(unsigned int dt, bool rotate_flag, bool rotate_reverse_flag, bool translate_flag,
+                      bool translate_reverse_flag)
 {
   // Update the object
-  m_cube->Update(dt);
+  m_cube->Update(dt, rotate_flag, rotate_reverse_flag, translate_flag, translate_reverse_flag);
 }
 
 void Graphics::Render()
