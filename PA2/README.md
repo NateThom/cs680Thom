@@ -50,7 +50,7 @@ make
 ```
 
 ## Usage
-While the program is running controls can be input via the keyboard and mouse as follows:
+While the program is running controls can be input via the keyboard as follows:
 
 <ol>
   <li> Up Arrow Key: Inverts the rotation of the cube </li>
