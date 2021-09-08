@@ -31,6 +31,7 @@ please specify shader file paths with either -v for vertex shader of -f for frag
 ./PA2 -v <path-to-vertex-shader>
 ./PA2 -f <path-to-fragment-shader>
 ./PA2 -v <path-to-vertex-shader> -f <path-to-fragment-shader>
+./PA2 -v ../shaders/vert1.glsl -f ../shaders/frag1.glsl
 ```
 
 If no custom shader file paths are provided then the program will run with the default shaders.
