@@ -28,9 +28,9 @@ Note that this program is designed to accept custom vertex and fragment shaders.
 please specify shader file paths with either -v for vertex shader of -f for fragment shader. For example:
 
 ```bash
-./PA1 -v <path-to-vertex-shader>
-./PA1 -f <path-to-fragment-shader>
-./PA1 -v <path-to-vertex-shader> -f <path-to-fragment-shader>
+./PA2 -v <path-to-vertex-shader>
+./PA2 -f <path-to-fragment-shader>
+./PA2 -v <path-to-vertex-shader> -f <path-to-fragment-shader>
 ```
 
 If no custom shader file paths are provided then the program will run with the default shaders.
@@ -46,16 +46,14 @@ mkdir build
 cd build
 cmake ..
 make
-./Tutorial
+./PA2 <path-to-vertex-shader> -f <path-to-fragment-shader>
 ```
 
-### Makefile Instructions 
-The makefile works as expected and must be updated with new files added in.
+## Usage
+While the program is running controls can be input via the keyboard and mouse as follows:
 
-```bash
-mkdir build
-cd build
-cp ../makefile .
-make
-./Tutorial
-```
+Up Arrow Key: Inverts the rotation of the cube
+Left Arrow Key: Starts/stops the rotation of the cube
+Down Arrow Key: Inverts the translation/orbit of the cube
+Right Arrow Key: Starts/stops the translation/orbit of the cube
+Any Mouse Button: Inverts the rotation of the cube
