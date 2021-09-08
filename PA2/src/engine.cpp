@@ -94,15 +94,79 @@ bool Engine::Initialize(const std::string& vertexShaderFilePath, const std::stri
 void Engine::Run()
 {
   m_running = true;
-  float red;
-  float green;
-  float blue;
-  float alpha;
+  static float red = 0.0;
+  static float green = 00;
+  static float blue = 0.2;
+  static float alpha = 1.0;
+  ImGuiIO& io = ImGui::GetIO(); (void)io;
 
   while(m_running)
   {
     // Update the DT
     m_DT = getDT();
+
+    // Update and render the graphics
+    m_graphics->Update(m_DT, m_rotate_flag, m_rotate_reverse_flag, m_translate_flag, m_translate_reverse_flag);
+    m_graphics->Render(red, green, blue, alpha);
+
+    ImGui_ImplOpenGL3_NewFrame();
+    ImGui_ImplSDL2_NewFrame();
+    ImGui::NewFrame();
+
+    ImGui::Begin("Swanky menu!");                          // Create a window called "Hello, world!" and append into it.
+
+//    ImGui::Text("Try out a different background color by adjusting the sliders.");               // Display some text (you can use a format strings too)
+    ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+
+    ImGui::SliderFloat("Red", &red, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
+    ImGui::SliderFloat("Green", &green, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
+    ImGui::SliderFloat("Blue", &blue, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
+//    ImGui::SliderFloat("Alpha", &alpha, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
+
+    if (ImGui::Button("Reset Color")) {                         // Buttons return true when clicked (most widgets return true when edited/activated)
+      red = 0.0;
+      green = 0.0;
+      blue = 0.2;
+//      alpha = 1.0;
+    }
+    if (ImGui::Button("Invert Rotation")) {
+      // start/stop rotation
+      if (m_rotate_reverse_flag) {
+        m_rotate_reverse_flag = false;
+      } else if (!m_rotate_reverse_flag) {
+        m_rotate_reverse_flag = true;
+      }
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("Invert Translation/Orbit")) {
+      // start/stop rotation
+      if (m_translate_reverse_flag) {
+        m_translate_reverse_flag = false;
+      } else if (!m_translate_reverse_flag) {
+        m_translate_reverse_flag = true;
+      }
+    }
+    if (ImGui::Button("Stop Rotation")) {
+      // start/stop rotation
+      if (m_rotate_flag) {
+        m_rotate_flag = false;
+      } else if (!m_rotate_flag) {
+        m_rotate_flag = true;
+      }
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("Stop Translation/Orbit")) {
+      // start/stop rotation
+      if (m_translate_flag) {
+        m_translate_flag = false;
+      } else if (!m_translate_flag) {
+        m_translate_flag = true;
+      }
+    }
+    ImGui::End();
+    ImGui::Render();
+    glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
     // Check the keyboard input
     while(SDL_PollEvent(&m_event) != 0)
@@ -110,38 +174,6 @@ void Engine::Run()
       // Process keyboard and mouse events
       Keyboard();
     }
-
-    // Update and render the graphics
-    m_graphics->Update(m_DT, m_rotate_flag, m_rotate_reverse_flag, m_translate_flag, m_translate_reverse_flag);
-    m_graphics->Render(red, green, blue, alpha);
-
-    ImGuiIO& io = ImGui::GetIO(); (void)io;
-
-    ImGui_ImplOpenGL3_NewFrame();
-    ImGui_ImplSDL2_NewFrame();
-    ImGui::NewFrame();
-    static float f = 0.0f;
-    static int counter = 0;
-
-    ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
-
-    ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
-
-    ImGui::SliderFloat("Red", &red, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-    ImGui::SliderFloat("Green", &green, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-    ImGui::SliderFloat("Blue", &blue, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-    ImGui::SliderFloat("Alpha", &alpha, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-
-    if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-      counter++;
-    ImGui::SameLine();
-    ImGui::Text("counter = %d", counter);
-
-    ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-    ImGui::End();
-    ImGui::Render();
-    glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
-    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
     // Swap to the Window
     m_window->Swap();
@@ -193,15 +225,15 @@ void Engine::Keyboard()
       m_translate_reverse_flag = false;
     }
   }
-  else if (m_event.type == SDL_MOUSEBUTTONDOWN){
-    // invert rotation direction
-    if (!m_rotate_reverse_flag){
-      m_rotate_reverse_flag = true;
-    }
-    else if (m_rotate_reverse_flag){
-      m_rotate_reverse_flag = false;
-    }
-  }
+//  else if (m_event.type == SDL_MOUSEBUTTONDOWN){
+//    // invert rotation direction
+//    if (!m_rotate_reverse_flag){
+//      m_rotate_reverse_flag = true;
+//    }
+//    else if (m_rotate_reverse_flag){
+//      m_rotate_reverse_flag = false;
+//    }
+//  }
 }
 
 unsigned int Engine::getDT()
