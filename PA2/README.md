@@ -19,10 +19,7 @@ brew install glew glm sdl2
 ## Building and Running
 
 ### CMake Instructions
-The building of the project is done using CMake, installation with apt-get or brew may be necessary. Later use with CMake and Shader files will be require the copy of a directory where those files are stored (ex. shaders). To do this in the ```add_custom_target``` function place 
-```cmake
-COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_SOURCE_DIR}/shaders/ ${CMAKE_CURRENT_BINARY_DIR}/shaders
-```
+The building of the project is done using CMake, installation with apt-get or brew may be necessary. 
 
 ```bash
 mkdir build
