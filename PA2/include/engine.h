@@ -13,7 +13,6 @@ class Engine
     Engine(string name, int width, int height);
     Engine(string name);
     ~Engine();
-    bool Initialize();
     bool Initialize(const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath);
     void Run();
     void Keyboard();

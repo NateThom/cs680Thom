@@ -9,15 +9,17 @@ int main(int argc, char **argv){
   // Collect command line arguments for fragment and vertex shader files
   std::string vertexShaderFilePath, fragmentShaderFilePath;
 
-  if(input.cmdOptionExists("-v")) {
+  if(input.cmdOptionExists("-v") and input.cmdOptionExists("-f")) {
     vertexShaderFilePath = input.getCmdOption("-v");
-  }
-  if(input.cmdOptionExists("-f")) {
     fragmentShaderFilePath = input.getCmdOption("-f");
+  }
+  else{
+    std::cerr<<"Improper usage! You must specify the location of the vertex and fragment shaders as follows: \n"
+               "./PA2 -v <path-to-vertex-shader> -f <path-to-fragment-shader>";
   }
 
   // Start an engine and run it then cleanup after
-  Engine *engine = new Engine("PA2", 1000, 800);
+  auto *engine = new Engine("PA2", 1000, 800);
   if(!engine->Initialize(vertexShaderFilePath, fragmentShaderFilePath))
   {
     printf("The engine failed to start.\n");

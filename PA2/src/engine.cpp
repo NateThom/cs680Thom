@@ -35,33 +35,6 @@ Engine::~Engine()
   m_graphics = NULL;
 }
 
-bool Engine::Initialize()
-{
-  // Start a window
-  m_window = new Window();
-  if(!m_window->Initialize(m_WINDOW_NAME, &m_WINDOW_WIDTH, &m_WINDOW_HEIGHT))
-  {
-    printf("The window failed to initialize.\n");
-    return false;
-  }
-
-  // Start the graphics
-  m_graphics = new Graphics();
-  if(!m_graphics->Initialize(m_WINDOW_WIDTH, m_WINDOW_HEIGHT))
-  {
-    printf("The graphics failed to initialize.\n");
-    return false;
-  }
-
-  // Set the time
-  m_currentTimeMillis = GetCurrentTimeMillis();
-
-  glsl_version = "#version 130";
-
-  // No errors
-  return true;
-}
-
 bool Engine::Initialize(const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath)
 {
   // Start a window
