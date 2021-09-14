@@ -116,11 +116,11 @@ bool Graphics::Initialize(int width, int height, const std::string& vertexShader
   return true;
 }
 
-void Graphics::Update(float rotation_speed, float translation_speed)
+void Graphics::Update(float planet_rotation_speed, float planet_translation_speed, float moon_rotation_speed, float moon_translation_speed)
 {
   // Update the object
-  m_planet->Update(glm::mat4(1.0f), rotation_speed, translation_speed);
-//  m_moon->Update(m_planet->GetModel(), rotate_speed, !rotate_flag, rotate_reverse_flag, !translate_flag, translate_reverse_flag);
+  m_planet->UpdateFromOrigin(planet_rotation_speed, planet_translation_speed);
+  m_moon->UpdateFromModel(m_planet->GetModelTranslation(), moon_rotation_speed, moon_translation_speed);
 }
 
 void Graphics::Render(float red, float green, float blue, float alpha)
@@ -140,8 +140,8 @@ void Graphics::Render(float red, float green, float blue, float alpha)
   glUniformMatrix4fv(m_planetModelMatrix, 1, GL_FALSE, glm::value_ptr(m_planet->GetModel()));
   m_planet->Render();
 
-//  glUniformMatrix4fv(m_moonModelMatrix, 1, GL_FALSE, glm::value_ptr(m_moon->GetModel()));
-//  m_moon->Render();
+  glUniformMatrix4fv(m_moonModelMatrix, 1, GL_FALSE, glm::value_ptr(m_moon->GetModel()));
+  m_moon->Render();
 
   // Get any errors from OpenGL
   auto error = glGetError();

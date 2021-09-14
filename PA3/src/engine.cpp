@@ -8,11 +8,6 @@ Engine::Engine(string name, int width, int height)
   m_WINDOW_HEIGHT = height;
   m_FULLSCREEN = false;
 
-  m_rotate_flag = true;
-  m_rotate_reverse_flag = false;
-  m_translate_flag = true;
-  m_translate_reverse_flag = true;
-
   m_planet_rotation_magnitude = 0.0;
   m_planet_translation_speed_magnitude = 0.0;
 }
@@ -23,11 +18,6 @@ Engine::Engine(string name)
   m_WINDOW_HEIGHT = 0;
   m_WINDOW_WIDTH = 0;
   m_FULLSCREEN = true;
-
-  m_rotate_flag = true;
-  m_rotate_reverse_flag = true;
-  m_translate_flag = false;
-  m_translate_reverse_flag = false;
 
   m_planet_rotation_magnitude = 0.0;
   m_planet_translation_speed_magnitude = 0.0;
@@ -85,32 +75,39 @@ void Engine::Run()
     m_DT = getDT();
 
     // Update and render the graphics
-    m_graphics->Update(m_DT * m_planet_rotation_magnitude, m_DT * m_planet_translation_speed_magnitude);
+    m_graphics->Update(m_DT * m_planet_rotation_magnitude, m_DT * m_planet_translation_speed_magnitude,
+                       m_DT * m_moon_rotation_magnitude, m_DT * m_moon_translation_speed_magnitude);
     m_graphics->Render(red, green, blue, alpha);
 
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplSDL2_NewFrame();
     ImGui::NewFrame();
 
-    ImGui::Begin("Swanky menu!");                          // Create a window called "Hello, world!" and append into it.
+    ImGui::Begin("Swanky menu!");
 
-//    ImGui::Text("Try out a different background color by adjusting the sliders.");               // Display some text (you can use a format strings too)
     ImGui::Text("Application average: %.1f FPS", ImGui::GetIO().Framerate);
 
     ImGui::Text("Planet Rotation/Translation Settings:");
-    ImGui::SliderFloat("Rotation Speed", &m_planet_rotation_magnitude, -10.0f, 10.0f);
-    ImGui::SliderFloat("Translation Speed", &m_planet_translation_speed_magnitude, -10.0f, 10.0f);
-    if (ImGui::Button("Reset Planet Speeds")) {                         // Buttons return true when clicked (most widgets return true when edited/activated)
+    ImGui::SliderFloat("Planet Rotation Speed", &m_planet_rotation_magnitude, -5.0f, 5.0f);
+    ImGui::SliderFloat("Planet Translation Speed", &m_planet_translation_speed_magnitude, -5.0f, 5.0f);
+    if (ImGui::Button("Planet Reset Planet Speeds")) {
       m_planet_rotation_magnitude = 0.0;
       m_planet_translation_speed_magnitude = 0.0;
     }
 
-    ImGui::Text("Background Color Settings:");
-    ImGui::SliderFloat("Red", &red, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-    ImGui::SliderFloat("Green", &green, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-    ImGui::SliderFloat("Blue", &blue, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
+    ImGui::Text("Moon Rotation/Translation Settings:");
+    ImGui::SliderFloat("Moon Rotation Speed", &m_moon_rotation_magnitude, -5.0f, 5.0f);
+    ImGui::SliderFloat("Moon Translation Speed", &m_moon_translation_speed_magnitude, -5.0f, 5.0f);
+    if (ImGui::Button("Reset Moon Speeds")) {
+      m_moon_rotation_magnitude = 0.0;
+      m_moon_translation_speed_magnitude = 0.0;
+    }
 
-    if (ImGui::Button("Reset Color")) {                         // Buttons return true when clicked (most widgets return true when edited/activated)
+    ImGui::Text("Background Color Settings:");
+    ImGui::SliderFloat("Red", &red, 0.0f, 1.0f);
+    ImGui::SliderFloat("Green", &green, 0.0f, 1.0f);
+    ImGui::SliderFloat("Blue", &blue, 0.0f, 1.0f);
+    if (ImGui::Button("Reset Color")) {
       red = 0.0;
       green = 0.0;
       blue = 0.2;

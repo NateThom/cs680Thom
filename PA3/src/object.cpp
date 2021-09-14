@@ -63,9 +63,6 @@ Object::Object()
   angle_rotate = 0.0f;
   angle_translate = 0.0f;
 
-  direction_rotate = 1;
-  direction_translate = 1;
-
   glGenBuffers(1, &VB);
   glBindBuffer(GL_ARRAY_BUFFER, VB);
   glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * Vertices.size(), &Vertices[0], GL_STATIC_DRAW);
@@ -81,19 +78,36 @@ Object::~Object()
   Indices.clear();
 }
 
-void Object::Update(glm::mat4 model_origin, float rotation_speed, float translation_speed)
+void Object::UpdateFromOrigin(float rotation_speed, float translation_speed)
 {
   angle_rotate += rotation_speed * M_PI/1000;
 
   angle_translate += translation_speed * M_PI/1000;
 
-  model = glm::translate(model_origin, glm::vec3(cos(angle_translate) * 5, 0, sin(angle_translate) * 5));
+  model_translation = glm::translate(glm::mat4(1.0f), glm::vec3(cos(angle_translate) * 5, 0, sin(angle_translate) * 5));
+
+  model = glm::translate(glm::mat4(1.0f), glm::vec3(cos(angle_translate) * 5, 0, sin(angle_translate) * 5));
+  model = glm::rotate(model, (angle_rotate), glm::vec3(0.0, 1.0, 0.0));
+}
+
+void Object::UpdateFromModel(glm::mat4 other_model, float rotation_speed, float translation_speed)
+{
+  angle_rotate += rotation_speed * M_PI/1000;
+
+  angle_translate += translation_speed * M_PI/1000;
+
+  model = glm::translate(other_model, glm::vec3(cos(angle_translate) * 5, 0, sin(angle_translate) * 5));
   model = glm::rotate(model, (angle_rotate), glm::vec3(0.0, 1.0, 0.0));
 }
 
 glm::mat4 Object::GetModel()
 {
   return model;
+}
+
+glm::mat4 Object::GetModelTranslation()
+{
+  return model_translation;
 }
 
 void Object::Render()

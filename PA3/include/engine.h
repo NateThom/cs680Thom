@@ -37,11 +37,8 @@ class Engine
 
     float m_planet_rotation_magnitude;
     float m_planet_translation_speed_magnitude;
-
-    bool m_rotate_flag;
-    bool m_translate_flag;
-    bool m_rotate_reverse_flag;
-    bool m_translate_reverse_flag;
+    float m_moon_rotation_magnitude;
+    float m_moon_translation_speed_magnitude;
 };
 
 #endif // ENGINE_H
