@@ -3,6 +3,7 @@
 
 #include <sys/time.h>
 #include <assert.h>
+#include <string>
 
 #include "graphics.h"
 #include "window.h"

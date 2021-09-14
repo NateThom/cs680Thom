@@ -67,6 +67,10 @@ void Engine::Run()
   float green = 0.0;
   float blue = 0.2;
   float alpha = 1.0;
+  std::string planet_rotation_direction = "Planet Rotation: Stopped";
+  std::string planet_translation_direction = "Planet Translation: Stopped";
+  std::string moon_rotation_direction = "Moon Rotation: Stopped";
+  std::string moon_translation_direction = "Moon Translation: Stopped";
   ImGuiIO& io = ImGui::GetIO(); (void)io;
 
   while(m_running)
@@ -75,8 +79,8 @@ void Engine::Run()
     m_DT = getDT();
 
     // Update and render the graphics
-    m_graphics->Update(m_DT * m_planet_rotation_magnitude, m_DT * m_planet_translation_speed_magnitude,
-                       m_DT * m_moon_rotation_magnitude, m_DT * m_moon_translation_speed_magnitude);
+    m_graphics->Update(m_DT * -m_planet_rotation_magnitude, m_DT * m_planet_translation_speed_magnitude,
+                       m_DT * -m_moon_rotation_magnitude, m_DT * m_moon_translation_speed_magnitude);
     m_graphics->Render(red, green, blue, alpha);
 
     ImGui_ImplOpenGL3_NewFrame();
@@ -90,6 +94,14 @@ void Engine::Run()
     ImGui::Text("Planet Rotation/Translation Settings:");
     ImGui::SliderFloat("Planet Rotation Speed", &m_planet_rotation_magnitude, -5.0f, 5.0f);
     ImGui::SliderFloat("Planet Translation Speed", &m_planet_translation_speed_magnitude, -5.0f, 5.0f);
+    if (m_planet_rotation_magnitude == 0){planet_rotation_direction = "Planet Rotation: Stopped";}
+    else if (m_planet_rotation_magnitude > 0){planet_rotation_direction = "Planet Rotation: Clockwise";}
+    else{planet_rotation_direction = "Planet Rotation: Counter Clockwise";}
+    ImGui::Text(planet_rotation_direction.c_str());
+    if (m_planet_translation_speed_magnitude == 0){planet_translation_direction = "Planet Translation: Stopped";}
+    else if (m_planet_translation_speed_magnitude > 0){planet_translation_direction = "Planet Translation: Clockwise";}
+    else{planet_translation_direction = "Planet Translation: Counter Clockwise";}
+    ImGui::Text(planet_translation_direction.c_str());
     if (ImGui::Button("Planet Reset Planet Speeds")) {
       m_planet_rotation_magnitude = 0.0;
       m_planet_translation_speed_magnitude = 0.0;
@@ -98,6 +110,14 @@ void Engine::Run()
     ImGui::Text("Moon Rotation/Translation Settings:");
     ImGui::SliderFloat("Moon Rotation Speed", &m_moon_rotation_magnitude, -5.0f, 5.0f);
     ImGui::SliderFloat("Moon Translation Speed", &m_moon_translation_speed_magnitude, -5.0f, 5.0f);
+    if (m_moon_rotation_magnitude == 0){moon_rotation_direction = "Moon Rotation: Stopped";}
+    else if (m_moon_rotation_magnitude > 0){moon_rotation_direction = "Moon Rotation: Clockwise";}
+    else{moon_rotation_direction = "Moon Rotation: Counter Clockwise";}
+    ImGui::Text(moon_rotation_direction.c_str());
+    if (m_moon_translation_speed_magnitude == 0){moon_translation_direction = "Moon Translation: Stopped";}
+    else if (m_moon_translation_speed_magnitude > 0){moon_translation_direction = "Moon Translation: Clockwise";}
+    else{moon_translation_direction = "Moon Translation: Counter Clockwise";}
+    ImGui::Text(moon_translation_direction.c_str());
     if (ImGui::Button("Reset Moon Speeds")) {
       m_moon_rotation_magnitude = 0.0;
       m_moon_translation_speed_magnitude = 0.0;
