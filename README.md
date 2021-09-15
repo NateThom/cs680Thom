@@ -10,3 +10,6 @@ This is a cube that rotates in place on the screen. To run this project ```cd PA
 
 ## PA2: Interaction: Menus, Keyboard, and Mouse
 This is the same as PA1, but enables interation via the keyboard and a clickable menu. To run this project ```cd PA2``` then follow the instructions in the README.md.
+
+## PA3: Moons
+Renders and additional cube which orbits the original.
