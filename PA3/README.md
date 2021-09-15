@@ -1,4 +1,4 @@
-# PA2: Interaction: Menus, Keyboard, and Mouse
+# PA3: Moons
 
 # Dependencies, Building, and Running
 
@@ -26,7 +26,7 @@ mkdir build
 cd build
 cmake ..
 make
-./PA2 <path-to-vertex-shader> -f <path-to-fragment-shader>
+./P3 <path-to-vertex-shader> -f <path-to-fragment-shader>
 ```
 
 Note that this program is designed to accept custom vertex and fragment shaders. To run program with custom shaders 
@@ -45,8 +45,8 @@ If no custom shader file paths are provided then the program will run with the d
 While the program is running controls can be input via the keyboard as follows:
 
 <ol>
-  <li> Up Arrow Key: Inverts the rotation of the cube </li>
-  <li> Left Arrow Key: Starts/stops the rotation of the cube </li>
-  <li> Down Arrow Key: Inverts the translation/orbit of the cube </li>
-  <li> Right Arrow Key: Starts/stops the translation/orbit of the cube </li>
+  <li> Right Arrow Key: Increases planet rotation speed </li>
+  <li> Left Arrow Key: Decreases planet rotation speed </li>
+  <li> Up Arrow Key: Increases planet translation speed </li>
+  <li> Down Arrow Key: Decreases planet translation speed </li>
 </ol>
