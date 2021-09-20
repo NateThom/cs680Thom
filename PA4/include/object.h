@@ -2,6 +2,8 @@
 #define OBJECT_H
 
 #include <vector>
+#include <iostream>
+#include <fstream>
 #include "graphics_headers.h"
 
 class Object
@@ -12,6 +14,7 @@ class Object
     void UpdateFromOrigin(float rotate_speed, float translation_speed);
     void UpdateFromModel(glm::mat4 other_model, float rotate_speed, float translation_speed);
     void Render();
+    bool ReadObjFile(const std::string& objectFilePath, std::string& outFile);
 
     glm::mat4 GetModel();
     glm::mat4 GetModelTranslation();

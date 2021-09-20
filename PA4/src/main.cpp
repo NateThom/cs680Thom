@@ -15,11 +15,11 @@ int main(int argc, char **argv){
   }
   else{
     std::cerr<<"Improper usage! You must specify the location of the vertex and fragment shaders as follows: \n"
-               "./PA2 -v <path-to-vertex-shader> -f <path-to-fragment-shader>";
+               "./PA2 -v <path-to-vertex-shader> -f <path-to-fragment-shader>\n";
   }
 
   // Start an engine and run it then cleanup after
-  auto *engine = new Engine("PA2", 1080, 720);
+  auto *engine = new Engine("PA4", 1080, 720);
   if(!engine->Initialize(vertexShaderFilePath, fragmentShaderFilePath))
   {
     printf("The engine failed to start.\n");

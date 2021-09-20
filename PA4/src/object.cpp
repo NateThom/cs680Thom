@@ -127,3 +127,24 @@ void Object::Render()
   glDisableVertexAttribArray(0);
   glDisableVertexAttribArray(1);
 }
+
+// Based on code from ogldev_util.h
+bool Object::ReadObjFile(const std::string& objectFilePath, std::string& outFile){
+  std::ifstream f(objectFilePath);
+
+  bool return_flag = false;
+
+  if (f.is_open()){
+    std::string word;
+    while(f >> word) {
+      outFile.append(line);
+      outFile.append("\n");
+    }
+
+    f.close();
+
+    return_flag = true;
+  }
+
+  return return_flag;
+}
