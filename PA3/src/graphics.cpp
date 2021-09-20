@@ -116,11 +116,12 @@ bool Graphics::Initialize(int width, int height, const std::string& vertexShader
   return true;
 }
 
-void Graphics::Update(float planet_rotation_speed, float planet_translation_speed, float moon_rotation_speed, float moon_translation_speed)
+void Graphics::Update(float planet_rotation_speed, float planet_translation_speed, float planet_scale,
+                      float moon_rotation_speed, float moon_translation_speed, float moon_scale)
 {
   // Update the object
-  m_planet->UpdateFromOrigin(planet_rotation_speed, planet_translation_speed);
-  m_moon->UpdateFromModel(m_planet->GetModelTranslation(), moon_rotation_speed, moon_translation_speed);
+  m_planet->UpdateFromOrigin(planet_rotation_speed, planet_translation_speed, planet_scale);
+  m_moon->UpdateFromModel(m_planet->GetModelTranslation(), moon_rotation_speed, moon_translation_speed, moon_scale);
 }
 
 void Graphics::Render(float red, float green, float blue, float alpha)
