@@ -10,6 +10,11 @@ Engine::Engine(string name, int width, int height)
 
   m_planet_rotation_magnitude = 0.0;
   m_planet_translation_speed_magnitude = 0.0;
+  m_planet_scale = 1.0;
+
+  m_moon_rotation_magnitude = 0.0;
+  m_moon_translation_speed_magnitude = 0.0;
+  m_moon_scale = 1.0;
 }
 
 Engine::Engine(string name)
@@ -79,8 +84,8 @@ void Engine::Run()
     m_DT = getDT();
 
     // Update and render the graphics
-    m_graphics->Update(m_DT * -m_planet_rotation_magnitude, m_DT * m_planet_translation_speed_magnitude,
-                       m_DT * -m_moon_rotation_magnitude, m_DT * m_moon_translation_speed_magnitude);
+    m_graphics->Update(m_DT * -m_planet_rotation_magnitude, m_DT * m_planet_translation_speed_magnitude, m_planet_scale,
+                       m_DT * -m_moon_rotation_magnitude, m_DT * m_moon_translation_speed_magnitude, m_moon_scale);
     m_graphics->Render(red, green, blue, alpha);
 
     ImGui_ImplOpenGL3_NewFrame();
@@ -91,9 +96,10 @@ void Engine::Run()
 
     ImGui::Text("Application average: %.1f FPS", ImGui::GetIO().Framerate);
 
-    ImGui::Text("Planet Rotation/Translation Settings:");
+    ImGui::Text("Planet Rotation/Translation/Scale Settings:");
     ImGui::SliderFloat("Planet Rotation Speed", &m_planet_rotation_magnitude, -5.0f, 5.0f);
     ImGui::SliderFloat("Planet Translation Speed", &m_planet_translation_speed_magnitude, -5.0f, 5.0f);
+    ImGui::SliderFloat("Planet Scale", &m_planet_scale, -3.0f, 3.0f);
     if (m_planet_rotation_magnitude == 0){planet_rotation_direction = "Planet Rotation: Stopped";}
     else if (m_planet_rotation_magnitude > 0){planet_rotation_direction = "Planet Rotation: Clockwise";}
     else{planet_rotation_direction = "Planet Rotation: Counter Clockwise";}
@@ -107,9 +113,10 @@ void Engine::Run()
       m_planet_translation_speed_magnitude = 0.0;
     }
 
-    ImGui::Text("Moon Rotation/Translation Settings:");
+    ImGui::Text("Moon Rotation/Translation/Scale Settings:");
     ImGui::SliderFloat("Moon Rotation Speed", &m_moon_rotation_magnitude, -5.0f, 5.0f);
     ImGui::SliderFloat("Moon Translation Speed", &m_moon_translation_speed_magnitude, -5.0f, 5.0f);
+    ImGui::SliderFloat("Moon Scale", &m_moon_scale, -3.0f, 3.0f);
     if (m_moon_rotation_magnitude == 0){moon_rotation_direction = "Moon Rotation: Stopped";}
     else if (m_moon_rotation_magnitude > 0){moon_rotation_direction = "Moon Rotation: Clockwise";}
     else{moon_rotation_direction = "Moon Rotation: Counter Clockwise";}

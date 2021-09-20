@@ -9,8 +9,8 @@ class Object
   public:
     Object();
     ~Object();
-    void UpdateFromOrigin(float rotate_speed, float translation_speed);
-    void UpdateFromModel(glm::mat4 other_model, float rotate_speed, float translation_speed);
+    void UpdateFromOrigin(float rotate_speed, float translation_speed, float scale);
+    void UpdateFromModel(glm::mat4 other_model, float rotate_speed, float translation_speed, float scale);
     void Render();
 
     glm::mat4 GetModel();

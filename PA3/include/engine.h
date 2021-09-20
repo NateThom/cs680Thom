@@ -38,8 +38,11 @@ class Engine
 
     float m_planet_rotation_magnitude;
     float m_planet_translation_speed_magnitude;
+    float m_planet_scale;
+
     float m_moon_rotation_magnitude;
     float m_moon_translation_speed_magnitude;
+    float m_moon_scale;
 };
 
 #endif // ENGINE_H
