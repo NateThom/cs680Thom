@@ -11,8 +11,8 @@ class Object
   public:
     Object();
     ~Object();
-    void UpdateFromOrigin(float rotate_speed, float translation_speed);
-    void UpdateFromModel(glm::mat4 other_model, float rotate_speed, float translation_speed);
+    void UpdateFromOrigin(float rotate_speed, float translation_speed, float scale);
+    void UpdateFromModel(glm::mat4 other_model, float rotate_speed, float translation_speed, float scale);
     void Render();
     bool ReadObjFile(const std::string& objectFilePath, std::vector<unsigned int>& vertexIndices,
                 std::vector<unsigned int>& uvIndices,  std::vector<unsigned int>& normalIndices,

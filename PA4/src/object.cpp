@@ -91,27 +91,28 @@ Object::~Object()
   Indices.clear();
 }
 
-void Object::UpdateFromOrigin(float rotation_speed, float translation_speed)
+void Object::UpdateFromOrigin(float rotation_speed, float translation_speed, float scale)
 {
-  angle_rotate += rotation_speed * M_PI/1000;
+    angle_rotate += rotation_speed * M_PI/1000;
 
-  angle_translate += translation_speed * M_PI/1000;
+    angle_translate += translation_speed * M_PI/1000;
 
-  model_translation = glm::translate(glm::mat4(1.0f), glm::vec3(cos(angle_translate) * 5, 0, sin(angle_translate) * 5));
+    model_translation = glm::translate(glm::mat4(1.0f), glm::vec3(cos(angle_translate) * 5, 0, sin(angle_translate) * 5));
 
-  model = glm::translate(glm::mat4(1.0f), glm::vec3(cos(angle_translate) * 5, 0, sin(angle_translate) * 5));
-  model = glm::rotate(model, (angle_rotate), glm::vec3(0.0, 1.0, 0.0));
-//  model = glm::scale(model, glm::vec3( 2.0f, 2.0f, 2.0f ));
+    model = glm::translate(glm::mat4(1.0f), glm::vec3(cos(angle_translate) * 5, 0, sin(angle_translate) * 5));
+    model = glm::rotate(model, (angle_rotate), glm::vec3(0.0, 1.0, 0.0));
+    model = glm::scale(model, glm::vec3(scale));
 }
 
-void Object::UpdateFromModel(glm::mat4 other_model, float rotation_speed, float translation_speed)
+void Object::UpdateFromModel(glm::mat4 other_model, float rotation_speed, float translation_speed, float scale)
 {
-  angle_rotate += rotation_speed * M_PI/1000;
+    angle_rotate += rotation_speed * M_PI/1000;
 
-  angle_translate += translation_speed * M_PI/1000;
+    angle_translate += translation_speed * M_PI/1000;
 
-  model = glm::translate(other_model, glm::vec3(cos(angle_translate) * 5, 0, sin(angle_translate) * 5));
-  model = glm::rotate(model, (angle_rotate), glm::vec3(0.0, 1.0, 0.0));
+    model = glm::translate(other_model, glm::vec3(cos(angle_translate) * 5, 0, sin(angle_translate) * 5));
+    model = glm::rotate(model, (angle_rotate), glm::vec3(0.0, 1.0, 0.0));
+    model = glm::scale(model, glm::vec3( scale));
 }
 
 glm::mat4 Object::GetModel()
