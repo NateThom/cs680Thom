@@ -54,6 +54,19 @@ Object::Object()
     5, 1, 8
   };
 
+  std::vector< unsigned int > vertexIndices, uvIndices, normalIndices;
+  std::vector< glm::vec3 > temp_vertices;
+  std::vector< glm::vec2 > temp_uvs;
+  std::vector< glm::vec3 > temp_normals;
+  ReadObjFile("../models/ball_pit.obj", vertexIndices, uvIndices, normalIndices, temp_vertices,
+              temp_uvs, temp_normals);
+
+  unsigned int vertexIndex;
+  glm::vec3 vertex;
+  for( unsigned int i=0; i<vertexIndices.size(); i++ ) {
+    vertexIndex = vertexIndices[i];
+    vertex = temp_vertices[ vertexIndex-1 ];
+  }
   // The index works at a 0th index
   for(unsigned int i = 0; i < Indices.size(); i++)
   {
@@ -128,23 +141,109 @@ void Object::Render()
   glDisableVertexAttribArray(1);
 }
 
-// Based on code from ogldev_util.h
-bool Object::ReadObjFile(const std::string& objectFilePath, std::string& outFile){
+bool Object::ReadObjFile(const std::string& objectFilePath, std::vector<unsigned int>& vertexIndices,
+                         std::vector<unsigned int>& uvIndices,  std::vector<unsigned int>& normalIndices,
+                         std::vector<glm::vec3>& temp_vertices, std::vector<glm::vec2>& temp_uvs,
+                         std::vector<glm::vec3>& temp_normals){
+
   std::ifstream f(objectFilePath);
 
   bool return_flag = false;
 
   if (f.is_open()){
-    std::string word;
-    while(f >> word) {
-      outFile.append(line);
-      outFile.append("\n");
+    std::string temp_str;
+    std::string space_delimeter = " ";
+    std::string temp_str2;
+    size_t pos;
+
+    while(getline(f, temp_str)) {
+      std::cout << "";
+
+      if(temp_str.c_str()[0] == 'v' && temp_str.c_str()[1] == ' '){
+        glm::vec3 vertex;
+        for(int i=0; i<4; i++){
+          pos = temp_str.find(space_delimeter);
+          temp_str2 = temp_str.substr(0, pos);
+
+          if(i == 1){
+            vertex.x = atof(temp_str2.c_str());
+          }
+          else if(i == 2){
+            vertex.y = atof(temp_str2.c_str());
+          }
+          else if(i == 3){
+            vertex.z = atof(temp_str2.c_str());
+          }
+
+          temp_str.erase(0, pos + space_delimeter.length());
+        }
+        temp_vertices.push_back(vertex);
+      }
+
+      else if(temp_str.c_str()[0] == 'v' && temp_str.c_str()[1] == 't') {
+        glm::vec2 uv;
+        for (int i = 0; i < 3; i++) {
+          pos = temp_str.find(space_delimeter);
+          temp_str2 = temp_str.substr(0, pos);
+
+          if (i == 1) {
+            uv.x = atof(temp_str2.c_str());
+          } else if (i == 2) {
+            uv.y = atof(temp_str2.c_str());
+          }
+
+          temp_str.erase(0, pos + space_delimeter.length());
+        }
+        temp_uvs.push_back(uv);
+      }
+
+      else if(temp_str.c_str()[0] == 'v' && temp_str.c_str()[1] == 'n') {
+        glm::vec3 normal;
+        for (int i = 0; i < 4; i++) {
+          pos = temp_str.find(space_delimeter);
+          temp_str2 = temp_str.substr(0, pos);
+
+          if (i == 1) {
+            normal.x = atof(temp_str2.c_str());
+          }
+          else if (i == 2) {
+            normal.y = atof(temp_str2.c_str());
+          }
+          else if (i == 3) {
+            normal.z = atof(temp_str2.c_str());
+          }
+
+          temp_str.erase(0, pos + space_delimeter.length());
+        }
+        temp_normals.push_back(normal);
+      }
+
+      else if(temp_str.c_str()[0] == 'f' && temp_str.c_str()[1] == ' ') {
+        glm::vec3 normal;
+        for(int i=0; i<4; i++) {
+          pos = temp_str.find(space_delimeter);
+          temp_str2 = temp_str.substr(0, pos);
+
+          if (i == 1) {
+            std::cout << (temp_str2.c_str()[0] - '0') << std::endl;
+            vertexIndices.push_back((temp_str2.c_str()[0] - '0'));
+            vertexIndices.push_back((temp_str2.c_str()[2] - '0'));
+            vertexIndices.push_back((temp_str2.c_str()[4] - '0'));
+          } else if (i == 2) {
+            uvIndices.push_back((temp_str2.c_str()[0] - '0'));
+            uvIndices.push_back((temp_str2.c_str()[2] - '0'));
+            uvIndices.push_back((temp_str2.c_str()[4] - '0'));
+          } else if (i == 3) {
+            normalIndices.push_back((temp_str2.c_str()[0] - '0'));
+            normalIndices.push_back((temp_str2.c_str()[2] - '0'));
+            normalIndices.push_back((temp_str2.c_str()[4] - '0'));
+          }
+
+          temp_str.erase(0, pos + space_delimeter.length());
+        }
+      }
     }
-
-    f.close();
-
-    return_flag = true;
   }
-
-  return return_flag;
+  f.close();
+  return_flag = true;
 }
