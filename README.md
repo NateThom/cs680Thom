@@ -13,3 +13,6 @@ This is the same as PA1, but enables interation via the keyboard and a clickable
 
 ## PA3: Moons
 Renders and additional cube which orbits the original.
+
+## PA4 - Blender and Model Loading
+Provides the functionallity to load custom models in the form of .obj files!. Also includes a new directory - "models" - which has the purpose of storing custom models. The user will find a simple model there to demonstrate the project's model loading feature.
