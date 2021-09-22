@@ -1,5 +1,8 @@
 # PA4 - Blender and Model Loading
 
+# KNOWN ISSUES
+Unfortunately the model loading feature is not fully functional yet. Any arbitrary .obj models can be loaded into the program, but the order of the vertices/indices is off. This means that when the model is rendered to the screen it looks crumpled and mishapen.
+
 # Dependencies, Building, and Running
 
 ## Dependency Instructions
