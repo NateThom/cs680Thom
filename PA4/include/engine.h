@@ -14,7 +14,8 @@ class Engine
     Engine(string name, int width, int height);
     Engine(string name);
     ~Engine();
-    bool Initialize(const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath);
+    bool Initialize(const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath,
+                    const std::string& modelFilePath);
     void Run();
     void Keyboard();
     unsigned int getDT();

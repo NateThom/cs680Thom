@@ -42,7 +42,8 @@ Engine::~Engine()
   m_graphics = NULL;
 }
 
-bool Engine::Initialize(const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath)
+bool Engine::Initialize(const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath,
+                        const std::string& modelFilePath)
 {
   // Start a window
   m_window = new Window();
@@ -54,7 +55,7 @@ bool Engine::Initialize(const std::string& vertexShaderFilePath, const std::stri
 
   // Start the graphics
   m_graphics = new Graphics();
-  if(!m_graphics->Initialize(m_WINDOW_WIDTH, m_WINDOW_HEIGHT, vertexShaderFilePath, fragmentShaderFilePath))
+  if(!m_graphics->Initialize(m_WINDOW_WIDTH, m_WINDOW_HEIGHT, vertexShaderFilePath, fragmentShaderFilePath, modelFilePath))
   {
     printf("The graphics failed to initialize.\n");
     return false;

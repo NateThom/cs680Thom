@@ -9,15 +9,14 @@
 class Object
 {
   public:
-    Object();
+    Object(std::string filename);
     ~Object();
     void UpdateFromOrigin(float rotate_speed, float translation_speed, float scale);
     void UpdateFromModel(glm::mat4 other_model, float rotate_speed, float translation_speed, float scale);
     void Render();
     bool ReadObjFile(const std::string& objectFilePath, std::vector<unsigned int>& vertexIndices,
                 std::vector<unsigned int>& uvIndices,  std::vector<unsigned int>& normalIndices,
-                std::vector<glm::vec3>& temp_vertices, std::vector<glm::vec2>& temp_uvs,
-                std::vector<glm::vec3>& temp_normals);
+                std::vector<Vertex>& outVertices);
 
     glm::mat4 GetModel();
     glm::mat4 GetModelTranslation();

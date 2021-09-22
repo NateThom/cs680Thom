@@ -1,6 +1,6 @@
 #include "object.h"
 
-Object::Object()
+Object::Object(std::string filename)
 {  
   /*
     # Blender File for a Cube
@@ -55,18 +55,16 @@ Object::Object()
   };
 
   std::vector< unsigned int > vertexIndices, uvIndices, normalIndices;
-  std::vector< glm::vec3 > temp_vertices;
-  std::vector< glm::vec2 > temp_uvs;
-  std::vector< glm::vec3 > temp_normals;
-  ReadObjFile("../models/ball_pit.obj", vertexIndices, uvIndices, normalIndices, temp_vertices,
-              temp_uvs, temp_normals);
+  std::vector<Vertex> outVertices;
 
-  unsigned int vertexIndex;
-  glm::vec3 vertex;
-  for( unsigned int i=0; i<vertexIndices.size(); i++ ) {
-    vertexIndex = vertexIndices[i];
-    vertex = temp_vertices[ vertexIndex-1 ];
+  if(!ReadObjFile(filename, vertexIndices, uvIndices, normalIndices, outVertices)){
+      std::cout<<("The custom model file failed to open! Using default model (cube).")<<std::endl;
   }
+  else{
+      Vertices = outVertices;
+      Indices = vertexIndices;
+  }
+
   // The index works at a 0th index
   for(unsigned int i = 0; i < Indices.size(); i++)
   {
@@ -144,107 +142,134 @@ void Object::Render()
 
 bool Object::ReadObjFile(const std::string& objectFilePath, std::vector<unsigned int>& vertexIndices,
                          std::vector<unsigned int>& uvIndices,  std::vector<unsigned int>& normalIndices,
-                         std::vector<glm::vec3>& temp_vertices, std::vector<glm::vec2>& temp_uvs,
-                         std::vector<glm::vec3>& temp_normals){
+                         std::vector<Vertex>& outVertices){
 
   std::ifstream f(objectFilePath);
+
+  std::vector< glm::vec3 > temp_vertices;
+  std::vector< glm::vec2 > temp_uvs;
+  std::vector< glm::vec3 > temp_normals;
+  glm::vec3 vertex_from_file;
+  glm::vec2 uv_from_file;
+  glm::vec3 normal_from_file;
 
   bool return_flag = false;
 
   if (f.is_open()){
-    std::string temp_str;
-    std::string space_delimeter = " ";
-    std::string temp_str2;
-    size_t pos;
+    std::string temp_str, temp_str2, temp_str3;
+    std::string space_delimeter = " ", slash_delimeter = "/";
+    size_t pos, pos2;
 
     while(getline(f, temp_str)) {
       std::cout << "";
 
       if(temp_str.c_str()[0] == 'v' && temp_str.c_str()[1] == ' '){
-        glm::vec3 vertex;
         for(int i=0; i<4; i++){
           pos = temp_str.find(space_delimeter);
           temp_str2 = temp_str.substr(0, pos);
-
           if(i == 1){
-            vertex.x = atof(temp_str2.c_str());
+            vertex_from_file.x = atof(temp_str2.c_str());
           }
           else if(i == 2){
-            vertex.y = atof(temp_str2.c_str());
+            vertex_from_file.y = atof(temp_str2.c_str());
           }
           else if(i == 3){
-            vertex.z = atof(temp_str2.c_str());
+            vertex_from_file.z = atof(temp_str2.c_str());
           }
 
           temp_str.erase(0, pos + space_delimeter.length());
         }
-        temp_vertices.push_back(vertex);
+        temp_vertices.push_back(vertex_from_file);
       }
 
       else if(temp_str.c_str()[0] == 'v' && temp_str.c_str()[1] == 't') {
-        glm::vec2 uv;
         for (int i = 0; i < 3; i++) {
           pos = temp_str.find(space_delimeter);
           temp_str2 = temp_str.substr(0, pos);
-
           if (i == 1) {
-            uv.x = atof(temp_str2.c_str());
+            uv_from_file.x = atof(temp_str2.c_str());
           } else if (i == 2) {
-            uv.y = atof(temp_str2.c_str());
+            uv_from_file.y = atof(temp_str2.c_str());
           }
 
           temp_str.erase(0, pos + space_delimeter.length());
         }
-        temp_uvs.push_back(uv);
+        temp_uvs.push_back(uv_from_file);
       }
 
       else if(temp_str.c_str()[0] == 'v' && temp_str.c_str()[1] == 'n') {
-        glm::vec3 normal;
         for (int i = 0; i < 4; i++) {
           pos = temp_str.find(space_delimeter);
           temp_str2 = temp_str.substr(0, pos);
 
           if (i == 1) {
-            normal.x = atof(temp_str2.c_str());
+            normal_from_file.x = atof(temp_str2.c_str());
           }
           else if (i == 2) {
-            normal.y = atof(temp_str2.c_str());
+            normal_from_file.y = atof(temp_str2.c_str());
           }
           else if (i == 3) {
-            normal.z = atof(temp_str2.c_str());
+            normal_from_file.z = atof(temp_str2.c_str());
           }
 
           temp_str.erase(0, pos + space_delimeter.length());
         }
-        temp_normals.push_back(normal);
+        temp_normals.push_back(normal_from_file);
       }
 
       else if(temp_str.c_str()[0] == 'f' && temp_str.c_str()[1] == ' ') {
-        glm::vec3 normal;
         for(int i=0; i<4; i++) {
           pos = temp_str.find(space_delimeter);
           temp_str2 = temp_str.substr(0, pos);
-
           if (i == 1) {
-            std::cout << (temp_str2.c_str()[0] - '0') << std::endl;
-            vertexIndices.push_back((temp_str2.c_str()[0] - '0'));
-            vertexIndices.push_back((temp_str2.c_str()[2] - '0'));
-            vertexIndices.push_back((temp_str2.c_str()[4] - '0'));
-          } else if (i == 2) {
-            uvIndices.push_back((temp_str2.c_str()[0] - '0'));
-            uvIndices.push_back((temp_str2.c_str()[2] - '0'));
-            uvIndices.push_back((temp_str2.c_str()[4] - '0'));
-          } else if (i == 3) {
-            normalIndices.push_back((temp_str2.c_str()[0] - '0'));
-            normalIndices.push_back((temp_str2.c_str()[2] - '0'));
-            normalIndices.push_back((temp_str2.c_str()[4] - '0'));
+              for (int j = 0; j < 3; j++) {
+                  pos2 = temp_str2.find(slash_delimeter);
+                  temp_str3 = temp_str2.substr(0, pos2);
+                  vertexIndices.push_back(std::stoi(temp_str2));
+                  temp_str2.erase(0, pos2 + slash_delimeter.length());
+              }
+          }
+          else if (i == 2) {
+              for (int j = 0; j < 3; j++) {
+                  pos2 = temp_str2.find(slash_delimeter);
+                  temp_str3 = temp_str2.substr(0, pos2);
+
+                  uvIndices.push_back(std::stoi(temp_str2));
+
+                  temp_str2.erase(0, pos2 + slash_delimeter.length());
+              }
+          }
+          else if (i == 3) {
+              for (int j = 0; j < 3; j++) {
+                  pos2 = temp_str2.find(slash_delimeter);
+                  temp_str3 = temp_str2.substr(0, pos2);
+
+                  normalIndices.push_back(std::stoi(temp_str2));
+
+                  temp_str2.erase(0, pos2 + slash_delimeter.length());
+              }
           }
 
           temp_str.erase(0, pos + space_delimeter.length());
         }
       }
     }
+
+    return_flag = true;
   }
   f.close();
-  return_flag = true;
+
+  int vertexIndex;
+  glm::vec3 temp_vertex, temp_color = glm::vec3(1, 1, 1);
+  Vertex temp_out_vertex(temp_vertex, temp_color);
+  // For each vertex of each triangle
+  for( int i=0; i<temp_vertices.size(); i++ ){
+      vertexIndex = vertexIndices[i];
+      temp_out_vertex.vertex.x = temp_vertices[ vertexIndex-1 ].x;
+      temp_out_vertex.vertex.y = temp_vertices[ vertexIndex-1 ].y;
+      temp_out_vertex.vertex.z = temp_vertices[ vertexIndex-1 ].z;
+      outVertices.push_back(temp_out_vertex);
+  }
+
+  return return_flag;
 }

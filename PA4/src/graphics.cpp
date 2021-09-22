@@ -10,7 +10,8 @@ Graphics::~Graphics()
 
 }
 
-bool Graphics::Initialize(int width, int height, const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath)
+bool Graphics::Initialize(int width, int height, const std::string& vertexShaderFilePath,
+                          const std::string& fragmentShaderFilePath, const std::string& modelFilePath)
 {
   // Used for the linux OS
 #if !defined(__APPLE__) && !defined(MACOSX)
@@ -45,8 +46,8 @@ bool Graphics::Initialize(int width, int height, const std::string& vertexShader
   }
 
   // Create the object
-  m_planet = new Object();
-  m_moon = new Object();
+  m_planet = new Object(modelFilePath);
+  m_moon = new Object(modelFilePath);
 
   // Set up the shaders
   m_shader = new Shader();
