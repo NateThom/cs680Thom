@@ -1,4 +1,4 @@
-# PA3: Moons
+# PA4 - Blender and Model Loading
 
 # Dependencies, Building, and Running
 
@@ -26,20 +26,16 @@ mkdir build
 cd build
 cmake ..
 make
-./P3 <path-to-vertex-shader> -f <path-to-fragment-shader>
+./P4 -v <path-to-vertex-shader> -f <path-to-fragment-shader> -m <path-to-model-obj-file>
 ```
 
-Note that this program is designed to accept custom vertex and fragment shaders. To run program with custom shaders 
-please specify shader file paths with either -v for vertex shader of -f for fragment shader. For example:
+Note that this program is designed to accept custom vertex and fragment shaders in addition to custom model files. To run program with custom shaders and model
+please specify shader file paths with either -v for vertex shader, -f for fragment shader and -m for custom model .obj file. For example:
 
 ```bash
-./PA2 -v <path-to-vertex-shader>
-./PA2 -f <path-to-fragment-shader>
-./PA2 -v <path-to-vertex-shader> -f <path-to-fragment-shader>
-./PA2 -v ../shaders/vert1.glsl -f ../shaders/frag1.glsl
+./PA4 -v <path-to-vertex-shader> -f <path-to-fragment-shader> -m <path-to-model-obj-file>
+./PA4 -v ../shaders/vert1.glsl -f ../shaders/frag1.glsl -m ../models/ball_pit.obj
 ```
-
-If no custom shader file paths are provided then the program will run with the default shaders.
 
 ## Usage
 While the program is running controls can be input via the keyboard as follows:
