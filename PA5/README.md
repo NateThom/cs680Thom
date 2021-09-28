@@ -1,8 +1,8 @@
 # PA5: Model Loading
 
 # Teammates
-### Nathan Thom
 ### Alireza Kamran Pishhesari
+### Christopher Collum
 primary repo: https://github.com/cwcollum/cs680Collum/tree/master/PA5
 
 # Program Instructions
