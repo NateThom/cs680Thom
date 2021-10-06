@@ -1,8 +1,8 @@
 # PA6: Texture Loading
 
 # Teammates
-### Nathan Thom
 ### Alireza Kamran Pishhesari
+### Christopher Collum
 primary repo: https://github.com/cwcollum/cs680Collum/tree/master/PA6
 
 # Program Instructions
