@@ -20,5 +20,5 @@ Provides the functionallity to load custom models in the form of .obj files!. Al
 ## PA5 - Assimp and Model Loading
 Use Assimp to load models and colors (and then display them).
 
-# PA6: Texture Loading
+## PA6: Texture Loading
 Use Assimp to load models and textures for those models.
