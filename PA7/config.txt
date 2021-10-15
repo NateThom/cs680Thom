@@ -1,0 +1,24 @@
+stellar_body_count 16
+v_shader_file_path shaders/v_shader.glsl
+f_shader_file_path shaders/f_shader.glsl
+window_name SolarSystem
+window_height 1200
+window_width 1800
+
+// StellarBody name type pathToObj pathToMtl Aphelion Perihelion AxialTilt Rotation OrbitSpeed
+StellarBody Sun star objects/sun.obj objects/sun.mtl 0.0 0.0 0.12654 1.0 0.0
+StellarBody Mercury planet objects/mercury.obj objects/mercury.mtl 69816.9 46001.2 0.0356 0.42711 0.284759
+StellarBody Venus planet objects/venus.obj objects/venus.mtl 108939 107477 0.0461 -0.10301 0.11148
+StellarBody Earth planet objects/earth.obj objects/earth.mtl 152100 147098 0.40911 25.05 0.06858
+StellarBody Moon moon objects/moon.obj objects/moon.mtl 362.6 405.4 0.089797 0.848289 0.916877
+StellarBody Mars planet objects/mars.obj objects/mars.mtl 249200 206700 0.43965 24.39143 0.036464
+StellarBody Jupiter planet objects/jupiter.obj objects/jupiter.mtl 816620 740520 0.054454 60.5694 0.005782
+StellarBody Io moon objects/io.obj objects/io.mtl 420 423.4 0.0386 14.1605 14.1605
+StellarBody Europa moon objects/europa.obj objects/europa.mtl 664.862 676.938 0.03126 7.0544 7.0544
+StellarBody Ganymede moon objects/ganymede.obj objects/ganymede.mtl 1069.2 1071.6 0.03864 3.5015 3.5015
+StellarBody Callisto moon objects/callisto.obj objects/callisto.mtl 1869 1897 0.03520 1.501 1.501
+StellarBody Saturn planet objects/saturn.obj objects/saturn.mtl 1514500 1352550 0.46653 57.257 0.00233
+StellarBody Titan moon objects/titan.obj objects/titan.mtl 1186.680 1257.060 0.0 1.5710 1.5710
+StellarBody Uranus planet objects/uranus.obj objects/uranus.mtl 3008000 2742000 1.70641 -34.852 0.0008163
+StellarBody Neptune planet objects/neptune.obj objects/neptune.mtl 4540000 4460000 0.49423 37.3416 0.000416
+StellarBody Pluto planet objects/pluto.obj objects/pluto.mtl 7375930 4436820 2.13855 3.92215 0.0002766
