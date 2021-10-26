@@ -27,3 +27,6 @@ Use Assimp to load models and textures for those models.
 The objective of this project is to build an interactive solar system. 
 Use Assimp to load models and textures for the planets/moons 
 Use a data file for info on each object (size, orbit radius, rotation,...) 
+
+## PA8 - Bullet
+The purpose of this assignment is to become familiar with Bullet Physics, a 3D physics simulation engine.
