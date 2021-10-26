@@ -1,8 +1,8 @@
 # PA8: Bullet
 
 # Teammates
-### Nathan Thom
 ### Alireza Kamran Pishhesari
+### Christopher Collum
 primary repo: https://github.com/cwcollum/cs680Collum/tree/master/PA8
 
 # Program Instructions
