@@ -30,3 +30,6 @@ Use a data file for info on each object (size, orbit radius, rotation,...)
 
 ## PA8 - Bullet
 The purpose of this assignment is to become familiar with Bullet Physics, a 3D physics simulation engine.
+
+## PA9 - Lighting
+The purpose of this assignment is to create multiple shaders to do per vertex lighting and per fragment lighting. 
