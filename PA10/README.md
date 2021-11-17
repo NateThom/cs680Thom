@@ -1,7 +1,7 @@
 # PA10 - Pinball
 
 # Teammates
-### Nathan Thom
+### Christopher Collum
 ### Alireza Kamran Pishhesari
 primary repo: https://github.com/cwcollum/cs680Collum/tree/master/PA10
 
