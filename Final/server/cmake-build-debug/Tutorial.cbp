@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Tutorial"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\CMakeModules\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\assimp-5.0\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/nthom/Documents/cs680Thom/Final/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/nthom/Documents/cs680Thom/Final/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Tutorial_SUCCESSFUL">
+				<Option working_dir="/home/nthom/Documents/cs680Thom/Final/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 Tutorial_SUCCESSFUL"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/nthom/Documents/cs680Thom/Final/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Tutorial">
+				<Option output="/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Tutorial" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/nthom/Documents/cs680Thom/Final/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DUNIX"/>
+					<Add directory="/usr/include/ImageMagick-6"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/ImageMagick-6"/>
+					<Add directory="/usr/include/bullet"/>
+					<Add directory="/home/nthom/Documents/cs680Thom/Final/include"/>
+					<Add directory="/usr/include/SDL2"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 Tutorial"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Tutorial/fast">
+				<Option output="/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Tutorial" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/nthom/Documents/cs680Thom/Final/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DUNIX"/>
+					<Add directory="/usr/include/ImageMagick-6"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/ImageMagick-6"/>
+					<Add directory="/usr/include/bullet"/>
+					<Add directory="/home/nthom/Documents/cs680Thom/Final/include"/>
+					<Add directory="/usr/include/SDL2"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 Tutorial/fast"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/nthom/Documents/cs680Thom/Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/nthom/Documents/cs680Thom/Final/src/SDLnet.cpp">
+			<Option target="Tutorial"/>
+		</Unit>
+		<Unit filename="/home/nthom/Documents/cs680Thom/Final/src/SDLnetTCP.cpp">
+			<Option target="Tutorial"/>
+		</Unit>
+		<Unit filename="/home/nthom/Documents/cs680Thom/Final/src/SDLnetUDP.cpp">
+			<Option target="Tutorial"/>
+		</Unit>
+		<Unit filename="/home/nthom/Documents/cs680Thom/Final/src/SDLnetselect.cpp">
+			<Option target="Tutorial"/>
+		</Unit>
+		<Unit filename="/home/nthom/Documents/cs680Thom/Final/src/main.cpp">
+			<Option target="Tutorial"/>
+		</Unit>
+		<Unit filename="/home/nthom/Documents/cs680Thom/Final/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/nthom/Documents/cs680Thom/Final/CMakeModules/FindBullet.cmake">
+			<Option virtualFolder="CMake Files\CMakeModules\"/>
+		</Unit>
+		<Unit filename="/home/nthom/Documents/cs680Thom/Final/CMakeModules/FindGLEW.cmake">
+			<Option virtualFolder="CMake Files\CMakeModules\"/>
+		</Unit>
+		<Unit filename="/home/nthom/Documents/cs680Thom/Final/CMakeModules/FindGLM.cmake">
+			<Option virtualFolder="CMake Files\CMakeModules\"/>
+		</Unit>
+		<Unit filename="/home/nthom/Documents/cs680Thom/Final/CMakeModules/FindSDL2.cmake">
+			<Option virtualFolder="CMake Files\CMakeModules\"/>
+		</Unit>
+		<Unit filename="/home/nthom/Documents/cs680Thom/Final/../../../../../usr/lib/x86_64-linux-gnu/cmake/assimp-5.0/assimp-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\assimp-5.0\"/>
+		</Unit>
+		<Unit filename="/home/nthom/Documents/cs680Thom/Final/../../../../../usr/lib/x86_64-linux-gnu/cmake/assimp-5.0/assimp-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\assimp-5.0\"/>
+		</Unit>
+		<Unit filename="/home/nthom/Documents/cs680Thom/Final/../../../../../usr/lib/x86_64-linux-gnu/cmake/assimp-5.0/assimpTargets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\assimp-5.0\"/>
+		</Unit>
+		<Unit filename="/home/nthom/Documents/cs680Thom/Final/../../../../../usr/lib/x86_64-linux-gnu/cmake/assimp-5.0/assimpTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\assimp-5.0\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
